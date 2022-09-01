@@ -24,5 +24,6 @@ jobs:
         mkdir -p '${{ github.workspace }}/.kube' \
           && echo "$DDDMO" > $KUBECONFIG
         kubectl -n dddmo port-forward svc/dddmo 7687:7687 &
+        sleep 3
         curl -sv localhost:7687
 
