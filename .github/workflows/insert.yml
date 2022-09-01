@@ -26,5 +26,5 @@ jobs:
         sudo apt-get install -y neo4j-client
         kubectl -n dddmo port-forward svc/dddmo 7687:7687 &
         sleep 10
-        neo4j -a 'neo4j://localhost:7687'
+        cypher-shell -a 'neo4j://localhost:7687'
 
