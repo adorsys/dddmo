@@ -1,0 +1,26 @@
+name: neo4j 
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'dm-tools/**'
+
+jobs:
+  build:
+    name: neo4j
+    runs-on: ubuntu-latest
+    env:
+      KUBECONFIG: '${{ github.workspace }}/.kube/kubeconfig'
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Setup kubectl
+    - run: |
+        mkdir -p '${{ github.workspace }}/.kube' \
+          && echo '${{ secrets.KUBECONFIG }}' | base64 -d > $KUBECONFIG
+        kubectl version
+
