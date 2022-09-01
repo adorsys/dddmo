@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       KUBECONFIG: '${{ github.workspace }}/.kube/kubeconfig'
+      DDDMO: ${{ secrets.KUBECONFIG }}
 
     steps:
     - name: Check out code
@@ -21,6 +22,6 @@ jobs:
     - name: Setup kubectl
       run: |
         mkdir -p '${{ github.workspace }}/.kube' \
-          && echo '${{ secrets.KUBECONFIG }}' | base64 -d > $KUBECONFIG
+          && echo "$DDDMO" > $KUBECONFIG
         kubectl version
 
