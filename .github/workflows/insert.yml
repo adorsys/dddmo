@@ -25,5 +25,6 @@ jobs:
           && echo "$DDDMO" > $KUBECONFIG
         kubectl -n dddmo port-forward svc/dddmo 7687:7687 &
         sudo apt-get install -y neo4j-client
+        echo "test"
         echo "SHOW DATABASES;" | neo4j-client --non-interactive -a 'neo4j://localhost:7687'
 
